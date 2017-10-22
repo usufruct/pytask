@@ -1,4 +1,5 @@
 import unittest
+import uuid
 import json
 from pytask import Task
 
@@ -23,6 +24,16 @@ class TestMessage(unittest.TestCase):
 
     def test_has_param_secret(self):
         self.assertEqual(self.task.message["params"]["secret"], 'secretey')
+
+class TestMessageFormatting(unittest.TestCase):
+    def setUp(self):
+        self.task = Task(uuid.uuid1(), 34)
+
+    def test_respond_to_is_a_string(self):
+        self.assertIsInstance(self.task.message["respond_to"], str)
+
+    def test_param_secret_is_a_string(self):
+        self.assertIsInstance(self.task.message["params"]["secret"], str)
 
 class TestJsonMessage(unittest.TestCase):
     def setUp(self):

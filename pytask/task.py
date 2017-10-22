@@ -5,9 +5,9 @@ class Task():
 
     def __init__(self, respond_to, secret):
         self.message = {}
-        self.message['respond_to'] = respond_to
+        self.message['respond_to'] = str(respond_to)
         self.message['params'] = {}
-        self.message['params']['secret'] = secret
+        self.message['params']['secret'] = str(secret)
 
     def ping(self):
         return 'pong'
